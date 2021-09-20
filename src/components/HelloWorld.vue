@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue'
+import '@svgdotjs/svg.filter.js';
 import { SVG } from '@svgdotjs/svg.js'
 
 defineProps({
@@ -29,20 +30,24 @@ onMounted(()=>{
   }
   // 渐变色
   let gradient = draw.gradient('linear', function(add) {
-  add.stop(0, '#f9cc9d')
-  add.stop(1, '#f7d50f')
+  add.stop(0, '#fffc99')
+  add.stop(1, '#ffe71d')
   })
+  // 边缘渐变
+  let bordergradient = draw.gradient('radial', function(add) {
+  add.stop(0, '#b5bcc6')
+  add.stop(1, '#fee71d')
+})
+
   let r = 200
   if(width<800){
     r=100
   }
   const moon = draw.circle(r).attr({ fill: gradient,cx:width-r,cy:r  })
   // moon.
+  moon.stroke({ color:bordergradient, width: 3})
+  moon
   group.add(moon)
-
-
-
-
   
   // 流星
   // 流星渐变
