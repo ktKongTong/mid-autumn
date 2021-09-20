@@ -10,7 +10,7 @@ const count = ref(0)
 onMounted(()=>{
   let width = document.body.clientWidth
   let height = document.body.clientHeight
-
+  
   // console.log()
   // let width = 192
   // let height = 108
@@ -32,7 +32,11 @@ onMounted(()=>{
   add.stop(0, '#f9cc9d')
   add.stop(1, '#f7d50f')
   })
-  const moon = draw.circle(200).attr({ fill: gradient,cx:width-200,cy:200  })
+  let r = 200
+  if(width<800){
+    r=100
+  }
+  const moon = draw.circle(r).attr({ fill: gradient,cx:width-r,cy:r  })
   // moon.
   group.add(moon)
 
@@ -75,7 +79,7 @@ onMounted(()=>{
     let width = document.body.clientWidth
     let height = document.body.clientHeight
     draw.size(width,height)
-    moon.attr({cx:width-200,cy:200})
+    moon.attr({cx:width-r,cy:r})
     text.attr({x:width/2-text.length()/2,y:height-100})
     for(let item of starGroup){
       item.attr({
