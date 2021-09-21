@@ -88,12 +88,19 @@ onMounted(()=>{
 
   // 云组
   const cloudGroup = draw.group()
-  let path1 = draw.path('M8,25c0-4.418,3.582-8,8-8 s8,3.582,8,8')
-  let path2 = draw.path('M50.003,27 c0,0-2.535-0.375-5.003,0')
-  let path3 = draw.path('M50.003,27 c-0.115-8.699-7.193-16-15.919-16c-5.559,0-10.779,3.005-13.661,7.336C19.157,17.493,17.636,17,16,17c-4.418,0-8,3.582-8,8 c0,0.153,0.014,0.302,0.023,0.454C8.013,25.636,8,25.82,8,26c-3.988,1.912-7,6.457-7,11.155C1,43.67,6.33,49,12.845,49h24.507 c0.138,0,0.272-0.016,0.408-0.021C37.897,48.984,38.031,49,38.169,49h9.803C54.037,49,59,44.037,59,37.972 C59,32.601,55.106,27.961,50.003,27z')
-  cloudGroup.add(path1)
-  cloudGroup.add(path2)
-  cloudGroup.add(path3)
+  let cloud = draw.path('M43.36,16.67a9.4,9.4,0,0,0,.23-2.05A8.8,8.8,0,0,0,30,7.16,14.61,14.61,0,0,0,2.87,14.68a14.14,14.14,0,0,0,.25,2.68,6.47,6.47,0,0,0,3.31,12h35.3a6.46,6.46,0,0,0,1.63-12.69Z')
+  let smile = draw.path('M18.85,22.49a2.32,2.32,0,0,1-.46,0,2.21,2.21,0,0,1-1.51-1.17.31.31,0,0,1,.56-.28,1.58,1.58,0,0,0,2.48.45.31.31,0,0,1,.44,0,.32.32,0,0,1,0,.45A2.2,2.2,0,0,1,18.85,22.49Z')
+  smile.attr({fill:'#7FABDA'})
+  let cloudEye1 = draw.ellipse(1.75,1.76).attr({fill:'#000',cx:11.92,cy:16.26})
+  let eyeWhite1 = draw.circle(0.65).attr({fill:'#7FABDA',cx:12.39,cy:15.83})
+  let cloudEye2 = draw.ellipse(1.75,1.76).attr({fill:'#000',cx:26.54,cy:18.03})
+  let eyeWhite2 = draw.circle(0.65).attr({fill:'#7FABDA',cx:27.01,cy:17.6})
+  cloudGroup.add(cloud)
+  cloudGroup.add(smile)
+  cloudGroup.add(cloudEye1)
+  cloudGroup.add(eyeWhite1)
+  cloudGroup.add(cloudEye2)
+  cloudGroup.add(eyeWhite2)
   cloudGroup.css({
     'fill':'#7FABDA',
     'stroke':'#7383BF',
@@ -110,10 +117,10 @@ onMounted(()=>{
     swing:true,
     times: Number.MAX_SAFE_INTEGER,
     // wait: Math.floor(Math.random() * (6000 - 1800)) + 1800
-    }).move(width-r-100,r+20)
-    if(width>800){
-        cloudGroup.scale(2)
-    }
+  }).move(width-r-100,r+20)
+  if(width>800){
+      cloudGroup.scale(2)
+  }
 
   group.add(cloudGroup)
   // 窗口尺寸改变
